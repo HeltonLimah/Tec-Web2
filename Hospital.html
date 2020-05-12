@@ -1,0 +1,191 @@
+<html lang="pt-br">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+    <!-- SCRIPT RELACITVO AO FUNCIONAMENTO DO SISTEMA  -->
+    
+    <script>
+        $( document ).ready(function() {
+            
+            $( function() {
+            $( "#PoucaUrgencia, #Urgencia, #Emergencia" ).sortable({
+                connectWith: ".connectedSortable"
+                }).disableSelection();
+            } );
+            
+            $('#btnPoucaUrgencia').click(()=>{
+                var Paciente = $("#paciente").val();
+                
+
+                if(Paciente == ""){
+
+                    alert("Por Favor, preencha o campo nome.");
+                    $("#paciente").focus();
+
+                }else{
+                   var pessoa='<li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>'+Paciente+'</li>';
+
+                    $("#PoucaUrgencia").append(pessoa);
+
+                    $("#paciente").val("");
+                
+                }
+            });
+
+            $('#btnUrgencia').click(()=>{
+                var Paciente = $("#paciente").val();
+
+                if(Paciente == ""){
+
+                    alert("Por Favor, preencha o campo nome.");
+                    $("#paciente").focus();
+
+                }else{
+                    var pessoa='<li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>'+Paciente+'</li>';
+
+                    $("#Urgencia").append(pessoa);
+
+                    $("#paciente").val("");
+                }
+            })
+        
+            $('#btnEmergencia').click(()=>{
+                var Paciente = $("#paciente").val();
+
+                if(Paciente == ""){
+
+                    alert("Por Favor, preencha o campo nome.");
+                    $("#paciente").focus();
+
+                }else{
+                    var pessoa='<li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>'+Paciente+'</li>';
+                    $("#Emergencia").append(pessoa);
+
+                    $("#paciente").val("");
+                }
+            })   
+        });
+
+    </script>
+
+<!-- ESTILOS CSS APLICADOS AS DIV QUE RECEBEM O CONTEÚDO DO SISTEMA -->
+
+    <style>
+        #PoucaUrgencia, #Urgencia, #Emergencia {
+            border: 1px solid #F0FFF0;
+            width: 348px;
+            min-height: 38px;
+            list-style-type: none;
+            margin: 0;
+            padding: 5px 0 0 0;
+            float: left;
+            margin-right: 10px;
+        }
+        #PoucaUrgencia li, #Urgencia li, #Emergencia li {
+            margin: 0 5px 5px 5px;
+            padding: 5px;
+            font-size: 1.2em;
+            width: 335px;
+            background-color: #F8F8FF;
+            
+        }
+    </style>
+
+    <!-- PARTE ESTRUTURAL, LAYOUT DO SISTEMA -->
+
+    <title>Hospital tudo certo</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="col-sm-12">
+                <h1 class="text-center">Hospital Tudo Certo LTDA</h1>
+                <hr>
+            </div>    
+
+            <div class="col-sm-12">
+                <h3>Gerenciamento e Triagem de Pacientes - GTP</h3>
+                <hr>
+            </div>  
+
+        <!-- INSERÇÃO DE DADOS -->
+        
+            <div class="form-group col-sm-6">
+                <label class="sr-only" for="paciente">Paciente</label>
+                <input type="text" class="form-control" id="paciente" placeholder="Informe seu nome">
+            </div>
+            <button id="btnPoucaUrgencia" class="btn btn-success ">Pouca Urgência</button>
+            <button id="btnUrgencia" class="btn btn-warning ">Urgência</button>
+            <button id="btnEmergencia" class="btn btn-danger ">Emergência</button>
+          
+            <hr>
+
+        <!-- PAINEL REFERENTE A ALA POUCA URGÊNCIA -->
+
+                <div class="col-sm-4 ">
+                  <div class="panel panel-success">
+                    <div class="panel-heading">
+                      <h3 class="panel-title">Pouca Urgência</h3>
+                    </div>
+                    <div id="poucaUrgencia" class="panel-body ui-widget-content">
+                      
+                      <ul id="PoucaUrgencia" class="connectedSortable">
+                        <!-- Conteudo -->
+                      </ul>
+
+                    </div>
+                    </div>
+                </div>
+
+        <!-- PAINEL REFERENTE A ALA URGÊNCIA -->
+
+                <div class="col-sm-4">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                          <h3 class="panel-title">Urgência</h3>
+                        </div>
+                        <div id="urgencia" class="panel-body ui-widget-content">
+
+                          <ul id="Urgencia" class="connectedSortable">
+                            <!-- Conteudo -->
+                          </ul>
+                          
+                        </div>
+                      </div>
+                </div>
+
+        <!-- PAINEL REFERENTE A ALA EMERGÊNCIA -->
+
+                <div class="col-sm-4">
+                    <div class="panel panel-danger">
+                        <div class="panel-heading">
+                          <h3 class="panel-title">Emergência</h3>
+                        </div>
+                        <div id="emergencia" class="panel-body ui-widget-content">
+
+                          <ul id="Emergencia" class="connectedSortable">
+                            <!-- Conteudo -->
+                          </ul>
+
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+        </div>
+  </div>
+    
+</body>
+</html>
